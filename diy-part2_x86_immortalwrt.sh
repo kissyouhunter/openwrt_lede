@@ -28,10 +28,10 @@ echo "#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/
 #echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC+8 date "+%Y.%m.%d") powered by kissyouhunter '\" >> /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/d' package/emortal/default-settings/files/zzz-default-settings
 #echo "exit 0" >> package/emortal/default-settings/files/zzz-default-settings
-echo "sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
-echo "echo "DISTRIB_REVISION='$(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter'" >> /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
-echo "sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
-echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
+echo "sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+echo "echo "DISTRIB_REVISION='$(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter'" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+echo "sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
 
 #删除默认密码
 #sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-default-settings
@@ -40,9 +40,9 @@ echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_r
 wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt/main/diy/x86_lede/coremark.sh
 
 # echo '删除重复插件'
-rm -rf ./feeds/luci/applications/luci-app-netdata
-rm -rf ./feeds/luci/applications/luci-app-dockerman
-rm -rf ./feeds/luci//collections/luci-lib-docker
+#rm -rf ./feeds/luci/applications/luci-app-netdata
+#rm -rf ./feeds/luci/applications/luci-app-dockerman
+#rm -rf ./feeds/luci//collections/luci-lib-docker
 
 
 ##更改插件位置
