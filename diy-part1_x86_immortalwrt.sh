@@ -24,4 +24,4 @@ svn co https://github.com/kissyouhunter/openwrt-packages/trunk/luci-app-poweroff
 wget -O ./package/emortal/autocore/files/x86 https://raw.githubusercontent.com/kissyouhunter/openwrt/main/diy/x86_immortalwrt/index_x86_immortalwrt.htm
 
 # 替换banner
-wget -O ./package/emortal/default-settings/files/openwrt_banner https://raw.githubusercontent.com/kissyouhunter/openwrt/main/diy/x86_lede/banner
+wget -O ./package/emortal/default-settings/files/openwrt_banner https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/diy/x86_immortalwrt/openwrt_banner
