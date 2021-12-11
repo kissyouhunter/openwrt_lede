@@ -66,7 +66,7 @@ jobs:
       run: |
         df -hT $PWD
         cat /proc/cpuinfo | grep 'model name' | head -1
-        git clone -b $REPO_URL --single-branch $REPO_BRANCH openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
