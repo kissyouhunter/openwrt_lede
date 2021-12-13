@@ -49,7 +49,7 @@ wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubuserconten
 
 #ZeroTier
 
-#sed -i 's/vpn/network/g' ./package/feeds/luci/luci-app-zerotier/luasrc/controller/*.lua
+#sed -i 's/vpn/network/g' ./feeds/luci/applications/luci-app-zerotier/luasrc/controller
 
 #sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 
