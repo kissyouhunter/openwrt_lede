@@ -37,7 +37,7 @@ echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_r
 #sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-default-settings
 
 #替换coremark ./lede/feeds/packages/utils/coremark/coremark.sh
-wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt/main/diy/x86_lede/coremark.sh
+wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/diy/x86_lede/coremark.sh
 
 # echo '删除重复插件'
 #rm -rf ./feeds/luci/applications/luci-app-netdata
