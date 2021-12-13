@@ -48,7 +48,7 @@ jobs:
        
     - name: MachineType
       run: |
-        cp $GITHUB_WORKSPACE/common.sh ./
+        wget https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/common.sh
         sudo chmod +x cmmon.sh && ./common.sh
         cat /proc/cpuinfo
         cat /proc/meminfo
