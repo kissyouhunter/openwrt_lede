@@ -50,10 +50,10 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/common.sh
         sudo chmod +x common.sh && ./common.sh
-        cat /proc/cpuinfo
-        cat /proc/meminfo
-        cat /etc/issue
-        cat /proc/version           
+        #cat /proc/cpuinfo
+        #cat /proc/meminfo
+        #cat /etc/issue
+        #cat /proc/version           
         
     - name: Checkout
       uses: actions/checkout@main
