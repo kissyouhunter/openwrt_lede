@@ -48,12 +48,10 @@ jobs:
        
     - name: MachineType
       run: |
-        wget https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/common.sh
-        sudo chmod +x common.sh && bash common.sh
-        #cat /proc/cpuinfo
-        #cat /proc/meminfo
-        #cat /etc/issue
-        #cat /proc/version           
+        cat /proc/cpuinfo
+        cat /proc/meminfo
+        cat /etc/issue
+        cat /proc/version           
         
     - name: Checkout
       uses: actions/checkout@main
@@ -89,16 +87,16 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
       
-    - name: Load custom configuration
-      run: |
-        [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH 
+#    - name: Load custom configuration
+#      run: |
+#        [ -e files ] && mv files openwrt/files
+#        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+#        chmod +x $DIY_P2_SH
+#        cd openwrt
+#        $GITHUB_WORKSPACE/$DIY_P2_SH 
 
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
+#    - name: Install feeds
+#      run: cd openwrt && ./scripts/feeds install -a
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
