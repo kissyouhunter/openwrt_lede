@@ -26,7 +26,6 @@ env:
   CONFIG_FILE: x86_immortalwrt.config
   DIY_P1_SH: diy-part1_x86_immortalwrt.sh
   DIY_P2_SH: diy-part2_x86_immortalwrt.sh
-  COMMON: common.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -49,7 +48,8 @@ jobs:
        
     - name: MachineType
       run: |
-        $GITHUB_WORKSPACE/$COMMON
+        cp $GITHUB_WORKSPACE/common.sh ./
+        sudo chmod +x cmmon.sh && ./common.sh
         cat /proc/cpuinfo
         cat /proc/meminfo
         cat /etc/issue
