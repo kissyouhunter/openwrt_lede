@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt X86_immortalwrt_5.4.y
+name: Build OpenWrt X86_immortalwrt_4.19.y
 
 on:
   repository_dispatch:
@@ -21,9 +21,9 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-18.06-k5.4
-  FEEDS_CONF: immortalwrt_5.4.feeds.conf.default
-  CONFIG_FILE: x86_immortalwrt_5.4.config
+  REPO_BRANCH: openwrt-18.06
+  FEEDS_CONF: immortalwrt_4.19.feeds.conf.default
+  CONFIG_FILE: x86_immortalwrt_4.19.config
   DIY_P1_SH: diy-part1_x86_immortalwrt.sh
   DIY_P2_SH: diy-part2_x86_immortalwrt.sh
   UPLOAD_BIN_DIR: false
@@ -43,7 +43,7 @@ jobs:
       run: |
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用kissyouhunter仓库的immortalwrt_x86_5.4.y.config编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+          您正在使用kissyouhunter仓库的immortalwrt_x86_4.19.y.config编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
        
     - name: MachineType
@@ -213,5 +213,5 @@ jobs:
       run: |
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=我亲爱的✨主人✨：
-          您使用kissyouhunter仓库的immortalwrt_x86_5.4.y.config固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+          您使用kissyouhunter仓库的immortalwrt_x86_4.19.y.config固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
