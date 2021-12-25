@@ -52,7 +52,7 @@
 
 		local user_info = luci.sys.exec("cat /proc/net/arp | grep '0x2' | wc -l") or 0
 		
-		local cpu_usage = luci.sys.exec("top -n1 | awk '/^CPU/ {printf(\"%d%%\", 100 - $8)}'") or "6%"
+		local cpu_usage = (luci.sys.exec("expr 100 - $(top -n 1 | grep 'CPU:' | awk -F '%' '{print$4}' | awk -F ' ' '{print$2}')") or "6") .. "%"
 
 		local rv = {
 			cpuusage    = cpu_usage,
@@ -681,17 +681,17 @@
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
 				);
 
-          if (e = document.getElementById('memfree'))
+                        if (e = document.getElementById('memfree'))
 				e.innerHTML = progressbar(
 					Math.floor(info.memory.free / 1048576) + " <%:MB%>",
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
 				);
-
+				
 			if (e = document.getElementById('membuff'))
 				e.innerHTML = progressbar(
 					Math.floor(info.memory.buffered / 1048576) + " <%:MB%>",
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
-				);
+				);	
 
 			if (e = document.getElementById('swaptotal'))
 				e.innerHTML = progressbar(
@@ -728,20 +728,19 @@
 		<tr><td width="33%"><%:Kernel Version%></td><td><%=unameinfo.release or "?"%></td></tr>
 		<tr><td width="33%"><%:Local Time%></td><td id="localtime">-</td></tr>
 		<tr><td width="33%"><%:Uptime%></td><td id="uptime">-</td></tr>
-        <tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("sensors | grep 'Core 0' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 1' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 2' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 3' | cut -c10- |awk '{print $1}'")%></td></tr>
+		<tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("sensors | grep 'Core 0' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 1' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 2' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 3' | cut -c10- |awk '{print $1}'")%></td></tr>
 		<tr><td width="33%"><%:Load Average%></td><td id="loadavg">-</td></tr>
 		<tr><td width="33%"><%:CPU usage (%)%></td><td id="cpuusage">-</td></tr>
-		<tr><td width="33%"><%:编译作者%></td><td><a href="https://github.com/kissyouhunter/Openwrt_X86-Openwrt_N1-Armbian_N1" target="_blank">kisyouhunter</a>
-		</td></tr>
+			</tr>
 	</table>
 </fieldset>
-
+			
 <fieldset class="cbi-section">
 	<legend><%:Memory%></legend>
 
 	<table width="100%" cellspacing="10">
 		<tr><td width="33%"><%:Total Available%></td><td id="memtotal">-</td></tr>
-        <tr><td width="33%"><%:Free%></td><td id="memfree">-</td></tr>
+		<tr><td width="33%"><%:Free%></td><td id="memfree">-</td></tr>
 		<tr><td width="33%"><%:Buffered%></td><td id="membuff">-</td></tr>
 	</table>
 </fieldset>
