@@ -21,17 +21,10 @@ sed -i 's/192.168.1.1/192.168.2.3/g' package/base-files/files/bin/config_generat
 echo "#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
 
 #修改build日期
-#sed -i "s/R21.6.22/R21.6.22 2021.06.27 powered by kissyouhunter/g" package/lean/default-settings/files/zzz-default-settings
-#sed -i "s/Openwrt/N1/g" package/lean/default-settings/files/zzz-default-settings
-#version=$(grep "DISTRIB_REVISION=" package/emortal/default-settings/files/zzz-default-settings  | awk -F "'" '{print $2}')
-#sed -i '/DISTRIB_REVISION/d' package/emortal/default-settings/files/zzz-default-settings
-#echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC+8 date "+%Y.%m.%d") powered by kissyouhunter '\" >> /etc/openwrt_release" >> package/emortal/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/d' package/emortal/default-settings/files/zzz-default-settings
-#echo "exit 0" >> package/emortal/default-settings/files/zzz-default-settings
-echo "sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
-echo "echo "DISTRIB_REVISION='$(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter'" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
-echo "sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
-echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+#echo "sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+#echo "echo "DISTRIB_REVISION='$(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter'" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+#echo "sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
+#echo "echo "DISTRIB_DESCRIPTION='ImmortalWrt 18.06-SNAPSHOT '" >> /etc/openwrt_release" >> package/emortal/default-settings/files/99-default-settings
 
 #删除默认密码
 #sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-default-settings
