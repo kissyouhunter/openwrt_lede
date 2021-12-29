@@ -73,4 +73,4 @@ sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds
 
 sed -i 's/LINUX_KERNEL_HASH-5.4.162 = c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/LINUX_KERNEL_HASH-5.4.167 = b4e43116217ee02009aba7eab3081e64560b81ce42bc6096fcd81257f470a5a7/g' ./include/kernel-version.mk
 
-sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .167/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
+sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .167/g' ./include/kernel-version.mk
