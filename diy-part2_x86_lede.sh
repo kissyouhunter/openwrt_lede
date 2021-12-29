@@ -70,4 +70,7 @@ sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app
 sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
 
 # kernel 5.4.167
-wget -O ./include/kernel-version.mk https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob_plain;f=include/kernel-version.mk;hb=HEAD
+
+sed -i 's/LINUX_KERNEL_HASH-5.4.162 = c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/LINUX_KERNEL_HASH-5.4.167 = b4e43116217ee02009aba7eab3081e64560b81ce42bc6096fcd81257f470a5a7/g' ./include/kernel-version.mk
+
+sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .167/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
