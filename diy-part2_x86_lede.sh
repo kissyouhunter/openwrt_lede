@@ -68,3 +68,6 @@ sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app
 #tencentddns 腾讯ddns
 
 sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
+
+# kernel 5.4.167
+wget -O ./include/kernel-version.mk https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob_plain;f=include/kernel-version.mk;hb=HEAD
