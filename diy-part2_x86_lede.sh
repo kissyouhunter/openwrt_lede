@@ -71,6 +71,6 @@ sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds
 
 # kernel 5.4.167
 
-sed -i 's/LINUX_KERNEL_HASH-5.4.162 = c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/LINUX_KERNEL_HASH-5.4.169 = 554382d95f71afd5f9b49292eb5d1cbe3be1a0bad22d21487c9e6d506ee01a19/g' ./include/kernel-version.mk
+sed -i 's/LINUX_KERNEL_HASH-5.4.162 = c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/LINUX_KERNEL_HASH-5.4.170 = b09f74e0cf5fc7cf5de6aa932fe654c962cb10118bdbbdddb397022c6e6d382c/g' ./include/kernel-version.mk
 
-sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .169/g' ./include/kernel-version.mk
+sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .170/g' ./include/kernel-version.mk
