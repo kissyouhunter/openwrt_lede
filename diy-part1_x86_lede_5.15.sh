@@ -32,3 +32,10 @@ wget -O ./package/base-files/files/etc/banner https://raw.githubusercontent.com/
 
 # 替换内核
 sed -i 's/PATCHVER:=5.10/PATCHVER:=5.15/g' ./target/linux/x86/Makefile
+
+# 内核替换成 kernel 5.15.14
+
+sed -i 's/LINUX_KERNEL_HASH-5.15.12 = 7de919772b62647591527e904e3b3583783381a29d812404f58a222484e751a0/LINUX_KERNEL_HASH-5.15.14 = 2df2b4e71b5b2f25b201ba5a3d42bdf676b1deaae2fb44c14a1d8a33c9f76a4d/g' ./include/kernel-version.mk
+
+sed -i 's/LINUX_VERSION-5.15 = .12/LINUX_VERSION-5.15 = .14/g' ./include/kernel-version.mk
+
