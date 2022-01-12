@@ -29,8 +29,9 @@ wget -O ./package/emortal/default-settings/files/openwrt_banner https://raw.gith
 # 替换内核
 sed -i 's/PATCHVER:=4.19/PATCHVER:=4.14/g' ./target/linux/x86/Makefile
 
-# 内核替换成 kernel 4.9.296
+# 内核替换成 kernel 4.14.261
 
-sed -i 's/LINUX_KERNEL_HASH-4.9.294 = 31ca50df2076040d84e721a6f01021ac2a125a0c5adb73c977fed91f323fa268/LINUX_KERNEL_HASH-4.9.296 = 45cd46b08d0ab192543e24a13faf7f79fb19d9ba891dfda62683c4a707b56107/g' ./include/kernel-version.mk
+sed -i 's/LINUX_KERNEL_HASH-4.14.259 = 26e284541ff77bd3af14e40aa690bcf229d0f9b9677704fd9fecb59e108e4368/LINUX_KERNEL_HASH-4.14.261 = bffaaa4c93ab4ed1de61f804c26c92b82dd80f92793e20194b62497d7b8b4723/g' ./include/kernel-version.mk
 
-sed -i 's/LINUX_VERSION-4.9 = .294/LINUX_VERSION-4.9 = .296/g' ./include/kernel-version.mk
+sed -i 's/LINUX_VERSION-4.14 = .259/LINUX_VERSION-4.14 = .261/g' ./include/kernel-version.mk
+
