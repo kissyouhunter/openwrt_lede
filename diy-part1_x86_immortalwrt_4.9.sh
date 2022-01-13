@@ -31,7 +31,7 @@ sed -i 's/PATCHVER:=4.19/PATCHVER:=4.9/g' ./target/linux/x86/Makefile
 
 # 内核替换成 kernel 4.9.296
 
-sed -i 's/LINUX_KERNEL_HASH-4.9.294 = 31ca50df2076040d84e721a6f01021ac2a125a0c5adb73c977fed91f323fa268/LINUX_KERNEL_HASH-4.9.296 = 45cd46b08d0ab192543e24a13faf7f79fb19d9ba891dfda62683c4a707b56107/g' ./include/kernel-version.mk
+sed -i 's/LINUX_KERNEL_HASH-4.9.294 = 31ca50df2076040d84e721a6f01021ac2a125a0c5adb73c977fed91f323fa268/LINUX_KERNEL_HASH-4.9.296 = fd4bdbc8be3472d6324fa0f5f57a17f5c3f509d5f5b4fa4f1a9797d982d0bca8/g' ./include/kernel-version.mk
 
 sed -i 's/LINUX_VERSION-4.9 = .294/LINUX_VERSION-4.9 = .296/g' ./include/kernel-version.mk
 
