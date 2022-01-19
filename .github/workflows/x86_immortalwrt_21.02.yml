@@ -24,8 +24,8 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: immortalwrt_21.02.feeds.conf.default
   CONFIG_FILE: x86_immortalwrt_21.02.config
-  DIY_P1_SH: diy-part1_x86_immortalwrt.sh
-  DIY_P2_SH: diy-part2_x86_immortalwrt.sh
+  DIY_P1_SH: diy-part1_x86_immortalwrt_21.02.sh
+  DIY_P2_SH: diy-part2_x86_immortalwrt_21.02.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
