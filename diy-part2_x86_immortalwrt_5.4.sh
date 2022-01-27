@@ -66,6 +66,14 @@ sed -i 's/vpn/network/g' ./feeds/luci/applications/luci-app-zerotier/luasrc/cont
 
 #sed -i 's/"admin", "nlbw"/"admin", "network", "nlbw"/g' ./feeds/luci/applications/luci-app-nlbwmon/luasrc/controller/*.lua
 
-#adguarhome核心下载增加代理
+#samba4
+
+sed -i 's/nas/services/g' ./feeds/luci/applications/luci-app-samba4/luasrc/controller/*.lua
+
+#cifs-mount 挂载 SMB/CIFS 网络共享文件夹
+
+sed -i 's/nas/services/g' ./feeds/luci/applications/luci-app-cifs-mount/luasrc/controller/*.lua
+
+## Adguarhome核心下载增加代理
 
 sed -i 's|https://github.com/AdguardTeam/AdGuardHome/releases/download/${latest_ver}/AdGuardHome_linux_${Arch}.tar.gz|https://ghproxy.com/https://github.com/AdguardTeam/AdGuardHome/releases/download/${latest_ver}/AdGuardHome_linux_${Arch}.tar.gz|g' ./feeds/luci/applications/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
