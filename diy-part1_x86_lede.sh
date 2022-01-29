@@ -33,8 +33,8 @@ wget -O ./package/base-files/files/etc/banner https://raw.githubusercontent.com/
 # 替换内核
 sed -i 's/PATCHVER:=5.10/PATCHVER:=5.4/g' ./target/linux/x86/Makefile
 
-# 内核替换成 kernel 5.4.170
+# 内核替换成 kernel 5.4.175
 
-#sed -i 's/LINUX_KERNEL_HASH-5.4.162 = c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/LINUX_KERNEL_HASH-5.4.170 = b09f74e0cf5fc7cf5de6aa932fe654c962cb10118bdbbdddb397022c6e6d382c/g' ./include/kernel-5.4
+sed -i 's/LINUX_KERNEL_HASH-5.4.174 = e8cd1be5aefaf9b44024b039e31b6cb21135ab67f322e8dff98be5a9998308a9/LINUX_KERNEL_HASH-5.4.175 = ac901bdffb1488d6c730ca7ab42322163dd331b240e2f06ad83d199e251a4840/g' ./include/kernel-5.4
 
-#sed -i 's/LINUX_VERSION-5.4 = .162/LINUX_VERSION-5.4 = .170/g' ./include/kernel-5.4
+#sed -i 's/LINUX_VERSION-5.4 = .174/LINUX_VERSION-5.4 = .175/g' ./include/kernel-5.4
