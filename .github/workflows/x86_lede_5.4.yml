@@ -21,7 +21,7 @@ on:
       set_kernel:
         description: "KERNEL: 5.4 / 5.10 / 5.15"
         required: false
-        default: "diy-part1_x86_lede_5.4.sh"
+        default: "5.10"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
