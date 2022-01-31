@@ -70,6 +70,7 @@ jobs:
         set_kernel="${{ github.event.inputs.set_kernel }}"
         if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
             set_kernel="diy-part1_x86_lede_5.4.sh"
+        fi
         echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
 
     - name: telegrame_bot
