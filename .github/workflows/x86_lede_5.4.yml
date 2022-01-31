@@ -19,9 +19,9 @@ on:
         required: false
         default: 'false'
       set_kernel:
-        description: "KERNEL_FILE: 5.4 / 5.10 / 5.15"
+        description: "KERNEL: diy-part1_x86_lede_5.4.sh / diy-part1_x86_lede_5.10.sh / diy-part1_x86_lede_5.15.sh"
         required: false
-        default: "5.10"
+        default: "diy-part1_x86_lede_5.10.sh"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -45,10 +45,10 @@ jobs:
     steps:     
     - name: choose kernel
       run: |
-        ARR_KERNEL_FILE=("5.4" "5.10" "5.15")
+        ARR_KERNEL=("diy-part1_x86_lede_5.4.sh" "diy-part1_x86_lede_5.10.sh" "diy-part1_x86_lede_5.15.sh")
         set_kernel="${{ github.event.inputs.set_kernel }}"
-        if  [[ -z "${set_kernel_file}" || -z "$(echo "${ARR_KERNEL_FILE[@]}" | grep -w "${set_kernel_file}")" ]]; then
-            set_kernel="diy-part1_x86_lede_5.4.sh"
+        if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
+            set_kernel="diy-part1_x86_lede_5.10.sh"
         fi
         echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
 
