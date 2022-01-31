@@ -74,7 +74,7 @@ jobs:
             set_kernel="diy-part1_x86_lede_5.4.sh"
         elif [ $KERNEL="5.10" ]; then
             set_kernel="diy-part1_x86_lede_5.10.sh"
-        else [ $KERNEL="5.15"]
+        else [ $KERNEL="5.15"]; then
             set_kernel="diy-part1_x86_lede_5.15.sh"
         fi
         echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
