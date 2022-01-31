@@ -68,9 +68,9 @@ jobs:
  
         ARR_KERNEL=("5.4" "5.10" "5.15")
         set_kernel="${{ github.event.inputs.set_kernel }}"
-        if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
-            set_kernel="diy-part1_x86_lede_5.4.sh"
-        elif [ $KERNEL="5.4" ]; then
+        3if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
+            #set_kernel="diy-part1_x86_lede_5.4.sh"
+        if [ $KERNEL="5.4" ]; then
             set_kernel="diy-part1_x86_lede_5.4.sh"
         elif [ $KERNEL="5.10" ]; then
             set_kernel="diy-part1_x86_lede_5.10.sh"
