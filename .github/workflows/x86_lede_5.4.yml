@@ -18,13 +18,16 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+      set_kernel:
+        description: "KERNEL: 5.4 / 5.10 / 5.15"
+        required: false
+        default: "5.4"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: lede.feeds.conf.default
   CONFIG_FILE: x86_lede.config
-  DIY_P1_SH: diy-part1_x86_lede.sh
   DIY_P2_SH: diy-part2_x86_lede.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -39,14 +42,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 
-    steps:
-    - name: telegrame_bot
-      run: |
-        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
-          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用kissyouhunter仓库的lede_x86.config编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
-        fi
-        
+    steps:        
     - name: MachineType
       run: |
         cat /proc/cpuinfo
@@ -69,7 +65,27 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-             
+ 
+        ARR_KERNEL=("5.4" "5.10" "5.15")
+        set_kernel="${{ github.event.inputs.set_kernel }}"
+        if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
+            set_kernel="diy-part1_x86_lede_5.4.sh"
+        elif [ $KERNEL="5.4" ]; then
+            set_kernel="diy-part1_x86_lede_5.4.sh"
+        elif [ $KERNEL="5.10" ]; then
+            set_kernel="diy-part1_x86_lede_5.10.sh"
+        else [ $KERNEL="5.15"]
+            set_kernel="diy-part1_x86_lede_5.15.sh"
+        fi
+        echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
+
+    - name: telegrame_bot
+      run: |
+        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
+          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
+          您正在使用kissyouhunter仓库的${{ env.DIY_P1_SH }}编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+        fi
+ 
     - name: Clone source code
       working-directory: /workdir
       run: |
@@ -222,5 +238,5 @@ jobs:
       run: |
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=我亲爱的✨主人✨：
-          您使用kissyouhunter仓库的lede_x86.config固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+          您使用kissyouhunter仓库的${{ env.DIY_P1_SH }}固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
