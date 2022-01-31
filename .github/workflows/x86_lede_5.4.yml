@@ -42,7 +42,29 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 
-    steps:        
+    steps:     
+    - name: choose kernel
+      run: |
+        ARR_KERNEL=("5.4" "5.10" "5.15")
+        set_kernel="${{ github.event.inputs.set_kernel }}"
+        #if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
+            #set_kernel="diy-part1_x86_lede_5.4.sh"
+        if [[ "${KERNEL}" == "5.4" ]]; then
+           set_kernel="diy-part1_x86_lede_5.4.sh"
+        elif [[ "${KERNEL}" == "5.10" ]]; then
+           set_kernel="diy-part1_x86_lede_5.10.sh"
+        elif [[ "${KERNEL}" == "5.15" ]]; then
+           set_kernel="diy-part1_x86_lede_5.15.sh"           
+        fi
+        echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
+
+    - name: telegrame_bot
+      run: |
+        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
+          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
+          您正在使用kissyouhunter仓库的${{ env.DIY_P1_SH }}编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+        fi
+        
     - name: MachineType
       run: |
         cat /proc/cpuinfo
@@ -65,26 +87,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
- 
-        ARR_KERNEL=("5.4" "5.10" "5.15")
-        set_kernel="${{ github.event.inputs.set_kernel }}"
-        #if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
-            #set_kernel="diy-part1_x86_lede_5.4.sh"
-        if [[ "${KERNEL}" == "5.4" ]]; then
-           set_kernel="diy-part1_x86_lede_5.4.sh"
-        elif [[ "${KERNEL}" == "5.10" ]]; then
-           set_kernel="diy-part1_x86_lede_5.10.sh"
-        else [[ "${KERNEL}" == "5.15" ]]; then
-           set_kernel="diy-part1_x86_lede_5.15.sh"           
-        fi
-        echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
-
-    - name: telegrame_bot
-      run: |
-        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
-          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用kissyouhunter仓库的${{ env.DIY_P1_SH }}编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
-        fi
  
     - name: Clone source code
       working-directory: /workdir
