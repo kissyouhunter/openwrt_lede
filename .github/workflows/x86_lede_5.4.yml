@@ -19,7 +19,7 @@ on:
         required: false
         default: 'false'
       set_kernel:
-        description: "KERNEL: 5.4 / 5.10 / 5.15"
+        description: "KERNEL: diy-part1_x86_lede_5.4.sh / diy-part1_x86_lede_5.10.sh / diy-part1_x86_lede_5.15.sh"
         required: false
         default: "5.4"
 
