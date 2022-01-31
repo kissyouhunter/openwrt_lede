@@ -56,7 +56,7 @@ jobs:
         elif [[ "${KERNEL}" == "5.15" ]]; then
            set_kernel=diy-part1_x86_lede_5.15.sh           
         fi
-        echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
+        echo "DIY_P1_SH=$set_kernel" >> $GITHUB_ENV  
 
     - name: telegrame_bot
       run: |
