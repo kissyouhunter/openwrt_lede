@@ -70,11 +70,11 @@ jobs:
         set_kernel="${{ github.event.inputs.set_kernel }}"
         #if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
             #set_kernel="diy-part1_x86_lede_5.4.sh"
-        if [[ "$KERNEL" == "5.4" ]]; then
+        if [[ "${KERNEL}" == "5.4" ]]; then
            set_kernel="diy-part1_x86_lede_5.4.sh"
-        elif [[ "$KERNEL" == "5.10" ]]; then
+        elif [[ "${KERNEL}" == "5.10" ]]; then
            set_kernel="diy-part1_x86_lede_5.10.sh"
-        else [[ "$KERNEL" == "5.15" ]]; then
+        else [[ "${KERNEL}" == "5.15" ]]; then
            set_kernel="diy-part1_x86_lede_5.15.sh"           
         fi
         echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
