@@ -18,16 +18,13 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-      set_kernel:
-        description: "KERNEL: diy-part1_x86_lede_5.4.sh / diy-part1_x86_lede_5.10.sh / diy-part1_x86_lede_5.15.sh"
-        required: false
-        default: "diy-part1_x86_lede_5.10.sh"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: lede.feeds.conf.default
   CONFIG_FILE: x86_lede.config
+  DIY_P1_SH: diy-part1_x86_lede_5.4.sh  
   DIY_P2_SH: diy-part2_x86_lede.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -43,20 +40,11 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:     
-    - name: choose kernel
-      run: |
-        ARR_KERNEL=("diy-part1_x86_lede_5.4.sh" "diy-part1_x86_lede_5.10.sh" "diy-part1_x86_lede_5.15.sh")
-        set_kernel="${{ github.event.inputs.set_kernel }}"
-        if  [[ -z "${set_kernel}" || -z "$(echo "${ARR_KERNEL[@]}" | grep -w "${set_kernel}")" ]]; then
-            set_kernel="diy-part1_x86_lede_5.10.sh"
-        fi
-        echo "DIY_P1_SH=${set_kernel}" >> $GITHUB_ENV  
-
     - name: telegrame_bot
       run: |
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用kissyouhunter仓库的${{ env.DIY_P1_SH }}编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+          您正在使用kissyouhunter仓库的5.4 lede 编译您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
         
     - name: MachineType
@@ -165,17 +153,9 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf packages config.buildinfo feeds.buildinfo openwrt-x86-64-generic-kernel.bin openwrt-x86-64-generic-squashfs-rootfs.img.gz openwrt-x86-64-generic.manifest sha256sums version.buildinfo
-        if [[ "${DIY_P1_SH}" == "diy-part1_x86_lede_5.4.sh" ]]; then        
-           mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.4.Y-combined-efi.img.gz
-           mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.4.Y-combined.img.gz
-        elif [[ "${DIY_P1_SH}" == "diy-part1_x86_lede_5.10.sh" ]]; then        
-           mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.10.Y-combined-efi.img.gz
-           mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.10.Y-combined.img.gz
-        elif [[ "${DIY_P1_SH}" == "diy-part1_x86_lede_5.15.sh" ]]; then        
-           mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.15.Y-combined-efi.img.gz
-           mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.15.Y-combined.img.gz
-        fi
+        rm -rf packages config.buildinfo feeds.buildinfo openwrt-x86-64-generic-kernel.bin openwrt-x86-64-generic-squashfs-rootfs.img.gz openwrt-x86-64-generic.manifest sha256sums version.buildinfo        
+        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.4.Y-combined-efi.img.gz
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.4.Y-combined.img.gz
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
@@ -242,5 +222,5 @@ jobs:
       run: |
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=我亲爱的✨主人✨：
-          您使用kissyouhunter仓库的${{ env.DIY_P1_SH }}固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+          您使用kissyouhunter仓库的5.4 lede 固件顺利编译完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
