@@ -35,7 +35,7 @@ wget -O ./package/base-files/files/etc/banner https://raw.githubusercontent.com/
 
 # 内核替换成 kernel 5.10.90
 
-sed -i 's/LINUX_KERNEL_HASH-5.10.94 = 28ff44aa4a9a8a1ea52ae74e448da6174ca4ff042ddc202e36b157c951cd7508/LINUX_KERNEL_HASH-5.10.95 = c8d9daf94e2784ddc9cbb49936c89a20415aa02faa2c4ab4a832ab6d8c63fc23/g' ./include/kernel-5.10
+#sed -i 's/LINUX_KERNEL_HASH-5.10.94 = 28ff44aa4a9a8a1ea52ae74e448da6174ca4ff042ddc202e36b157c951cd7508/LINUX_KERNEL_HASH-5.10.95 = c8d9daf94e2784ddc9cbb49936c89a20415aa02faa2c4ab4a832ab6d8c63fc23/g' ./include/kernel-5.10
 
-sed -i 's/LINUX_VERSION-5.10 = .94/LINUX_VERSION-5.10 = .95/g' ./include/kernel-5.10
+#sed -i 's/LINUX_VERSION-5.10 = .94/LINUX_VERSION-5.10 = .95/g' ./include/kernel-5.10
 
