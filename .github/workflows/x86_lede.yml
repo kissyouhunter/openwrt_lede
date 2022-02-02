@@ -45,11 +45,11 @@ jobs:
     - name: choose kernel
       run: |
         set_kernel="${{ github.event.inputs.set_kernel }}"
-        if [ set_kernel="5.15.y" ]; then
+        if [ "$set_kernel" = "5.15.y" ]; then
             file="diy-part1_x86_lede_5.15.sh"
-        elif [ set_kernel="5.4.y" ]; then
+        elif [ "$set_kernel" = "5.4.y" ]; then
             file="diy-part1_x86_lede_5.4.sh"
-        else
+        elif [ "$set_kernel" = "5.10.y" ]; then
             file="diy-part1_x86_lede_5.10.sh"
         fi
         echo "DIY_P1_SH=${file}" >> $GITHUB_ENV
@@ -167,9 +167,18 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf packages config.buildinfo feeds.buildinfo openwrt-x86-64-generic-kernel.bin openwrt-x86-64-generic-squashfs-rootfs.img.gz openwrt-x86-64-generic.manifest sha256sums version.buildinfo        
-        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.4.Y-combined-efi.img.gz
-        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.4.Y-combined.img.gz
+        rm -rf packages config.buildinfo feeds.buildinfo openwrt-x86-64-generic-kernel.bin openwrt-x86-64-generic-squashfs-rootfs.img.gz openwrt-x86-64-generic.manifest sha256sums version.buildinfo
+        if [ "$set_kernel" = "5.15.y" ]; then        
+        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.15.Y-combined-efi.img.gz
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.15.Y-combined.img.gz
+
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.15.Y-combined.img.gz
+
+        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.10.Y-combined-efi.img.gz
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.10.Y-combined.img.gz
+
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.15.Y-combined.img.gz
+
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
