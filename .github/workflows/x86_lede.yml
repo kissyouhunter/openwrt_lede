@@ -45,12 +45,12 @@ jobs:
     - name: choose kernel
       run: |
         set_kernel="${{ github.event.inputs.set_kernel }}"
-        if [ set_kernel="5.10.y" ]; then
-            file="diy-part1_x86_lede_5.10.sh"
+        if [ set_kernel="5.15.y" ]; then
+            file="diy-part1_x86_lede_5.15.sh"
         elif [ set_kernel="5.4.y" ]; then
             file="diy-part1_x86_lede_5.4.sh"
-        elif [ set_kernel="5.15.y"]; then
-            file="diy-part1_x86_lede_5.15.sh"
+        else
+            file="diy-part1_x86_lede_5.10.sh"
         fi
         echo "DIY_P1_SH=${file}" >> $GITHUB_ENV
     
