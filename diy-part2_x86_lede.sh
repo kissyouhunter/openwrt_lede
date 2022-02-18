@@ -44,19 +44,19 @@ wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubuserconten
 
 #ZeroTier
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/controller/*.lua
+sed -i 's/vpn/network/g' ./feeds/luci/applications/luci-app-zerotier/luasrc/controller/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
+sed -i 's/vpn/network/g' ./feeds/luci/applications/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/view/zerotier/*.htm
+sed -i 's/vpn/network/g' ./feeds/luci/applications/luci-app-zerotier/luasrc/view/zerotier/*.htm
 
 #wrtbwmon 实时流量监测
 
-#sed -i 's/nlbw/network/g' ./package/lean/luci-app-wrtbwmon/luasrc/controller/*.lua
+#sed -i 's/nlbw/network/g' ./feeds/luci/applications/luci-app-wrtbwmon/luasrc/controller/*.lua
 
-#sed -i 's/nlbw/network/g' ./package/lean/luci-app-wrtbwmon/luasrc/model/cbi/wrtbwmon/*.lua
+#sed -i 's/nlbw/network/g' ./feeds/luci/applications/luci-app-wrtbwmon/luasrc/model/cbi/wrtbwmon/*.lua
 
-#sed -i 's/nlbw/network/g' ./package/lean/luci-app-wrtbwmon/luasrc/view/wrtbwmon/*.htm
+#sed -i 's/nlbw/network/g' ./feeds/luci/applications/luci-app-wrtbwmon/luasrc/view/wrtbwmon/*.htm
 
 #cpulimit cpu限制
 
