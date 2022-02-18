@@ -10,6 +10,13 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# echo '删除重复插件'
+rm -rf ./feeds/luci/applications/luci-app-netdata
+rm -rf ./feeds/luci/applications/luci-app-jd-dailybonus
+rm -rf ./feeds/luci/applications/luci-lib-docker
+rm -rf ./feeds/luci/applications/luci-app-cpufreq
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 sed -i 's/192.168.1.1/192.168.2.3/g' package/base-files/files/bin/config_generate
