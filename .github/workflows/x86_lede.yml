@@ -26,7 +26,6 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: lede.feeds.conf.default
-  CONFIG_FILE: x86_lede.config
   DIY_P2_SH: diy-part2_x86_lede.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -47,12 +46,16 @@ jobs:
         set_kernel="${{ github.event.inputs.set_kernel }}"
         if [ "$set_kernel" = "5.15.y" ]; then
             file="diy-part1_x86_lede_5.15.sh"
+            feeds="x86_lede_5.15.config"
         elif [ "$set_kernel" = "5.4.y" ]; then
             file="diy-part1_x86_lede_5.4.sh"
+            feeds="x86_lede_5.4.config"
         elif [ "$set_kernel" = "5.10.y" ]; then
             file="diy-part1_x86_lede_5.10.sh"
+            feeds="x86_lede_5.10.config"
         fi
         echo "DIY_P1_SH=${file}" >> $GITHUB_ENV
+        echo "CONFIG_FILE=${feeds}" >> $GITHUB_ENV
     
     - name: telegrame_bot
       run: |
