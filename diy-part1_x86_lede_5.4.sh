@@ -28,6 +28,6 @@ sed -i 's/PATCHVER:=5.10/PATCHVER:=5.4/g' ./target/linux/x86/Makefile
 
 # 内核替换成 kernel 5.4.175
 
-sed -i 's/LINUX_KERNEL_HASH-5.4.175 = ac901bdffb1488d6c730ca7ab42322163dd331b240e2f06ad83d199e251a4840/LINUX_KERNEL_HASH-5.4.180 = 1639b5d8a60038f3b81f549f194642778035b758c06c74ef5f69e48bd9ab931d/g' ./include/kernel-5.4
+#sed -i 's/LINUX_KERNEL_HASH-5.4.175 = ac901bdffb1488d6c730ca7ab42322163dd331b240e2f06ad83d199e251a4840/LINUX_KERNEL_HASH-5.4.180 = 1639b5d8a60038f3b81f549f194642778035b758c06c74ef5f69e48bd9ab931d/g' ./include/kernel-5.4
 
-sed -i 's/LINUX_VERSION-5.4 = .175/LINUX_VERSION-5.4 = .180/g' ./include/kernel-5.4
+#sed -i 's/LINUX_VERSION-5.4 = .175/LINUX_VERSION-5.4 = .180/g' ./include/kernel-5.4
