@@ -178,7 +178,7 @@ jobs:
             mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.10.Y-combined-efi.img.gz
             mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.10.Y-combined.img.gz
         elif [ "$DIY_P1_SH" = "diy-part1_x86_lede_5.4.sh" ]; then
-            mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.10.Y-combined-efi.img.gz
+            mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz openwrt-x86-64-5.4.Y-combined-efi.img.gz
             mv openwrt-x86-64-generic-squashfs-combined.img.gz openwrt-x86-64-5.4.Y-combined.img.gz
         fi
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
