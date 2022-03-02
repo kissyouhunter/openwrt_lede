@@ -34,6 +34,7 @@ version=$(grep "DISTRIB_REVISION=" package/lean/default-settings/files/zzz-defau
 sed -i '/DISTRIB_REVISION/d' package/lean/default-settings/files/zzz-default-settings
 #echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter '\" >> /etc/openwrt_release" >> package/lean/default-settings/files/zzz-default-settings
 echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC-8 date "+%Y.%m.%d") '\" >> /etc/openwrt_release" >> package/lean/default-settings/files/zzz-default-settings
+echo "ln -s /proc/self/fd /dev/fd" >> package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/d' package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
