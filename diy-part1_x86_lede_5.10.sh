@@ -32,3 +32,6 @@ sed -i 's/PATCHVER:=5.15/PATCHVER:=5.10/g' ./target/linux/x86/Makefile
 
 #sed -i 's/LINUX_VERSION-5.10 = .100/LINUX_VERSION-5.10 = .101/g' ./include/kernel-5.10
 
+# 删除error patch
+
+rm -f target/linux/generic/pending-5.10/701-net-ethernet-mtk_eth_soc-add-ipv6-flow-offloading-support.patch
