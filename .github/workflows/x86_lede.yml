@@ -67,7 +67,7 @@ jobs:
         
     - name: MachineType
       run: |
-        chmod +x $DIY_SH
+        chmod +x $GITHUB_WORKSPACE/$DIY_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_SH
         
