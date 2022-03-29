@@ -27,6 +27,7 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: lede.feeds.conf.default
   DIY_P2_SH: diy-part2_x86_lede.sh
+  DIY_SH: common.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -66,10 +67,9 @@ jobs:
         
     - name: MachineType
       run: |
-        cat /proc/cpuinfo
-        cat /proc/meminfo
-        cat /etc/issue
-        cat /proc/version    
+        chmod +x $DIY_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_SH
         
     - name: Checkout
       uses: actions/checkout@main
