@@ -67,9 +67,8 @@ jobs:
         
     - name: MachineType
       run: |
-        chmod +x $GITHUB_WORKSPACE/$DIY_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_SH
+        wget https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/common.sh
+        bash common.sh
         
     - name: Checkout
       uses: actions/checkout@main
