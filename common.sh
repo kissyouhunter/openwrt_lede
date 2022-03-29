@@ -1,5 +1,23 @@
 #!/bin/bash
 
+TIME() {
+[[ -z "$1" ]] && {
+	echo -ne " "
+} || {
+     case $1 in
+	r) export Color="\e[31;1m";;
+	g) export Color="\e[32;1m";;
+	b) export Color="\e[34;1m";;
+	y) export Color="\e[33;1m";;
+	z) export Color="\e[35;1m";;
+	l) export Color="\e[36;1m";;
+	w) export Color="\e[29;1m";;
+      esac
+	[[ $# -lt 2 ]] && echo -e "\e[36m\e[0m ${1}" || {
+		echo -e "\e[36m\e[0m ${Color}${2}\e[0m"
+	 }
+      }
+}
 
 ################################################################################################################
 # 获取CPU信息
@@ -14,6 +32,7 @@ CPUNAME="$(awk 'NR==1' CPU)" && CPUCORES="$(awk 'NR==2' CPU)"
 rm -rf CPU
 
 }
+Diy_chuli
 
 ################################################################################################################
 # 显示cpu信息
@@ -34,3 +53,4 @@ TIME z "  如果你编译的插件较多，而你又分配到E5系列CPU的话�
 echo
 TIME z "  下面将使用 [ $(nproc) 线程 ] 编译固件"
 }
+Diy_xinxi_Base
