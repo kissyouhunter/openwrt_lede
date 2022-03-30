@@ -60,7 +60,7 @@ jobs:
     
     - name: telegrame_bot
       run: |
-        find -name $DIY_SH
+        wget https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/$DIY_SH
         chmod +x $DIY_SH
         bash $DIY_SH
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
