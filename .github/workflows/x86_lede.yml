@@ -60,8 +60,7 @@ jobs:
     
     - name: telegrame_bot
       run: |
-        ls $GITHUB_WORKSPACE/
-        cp $GITHUB_WORKSPACE/$DIY_SH $DIY_SH -v
+        find -name $DIY_SH
         chmod +x $DIY_SH
         bash $DIY_SH
         if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
