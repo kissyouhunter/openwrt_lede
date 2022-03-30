@@ -60,6 +60,7 @@ jobs:
     
     - name: telegrame_bot
       run: |
+        ls $GITHUB_WORKSPACE/
         cp $GITHUB_WORKSPACE/$DIY_SH $DIY_SH -v
         chmod +x $DIY_SH
         bash $DIY_SH
