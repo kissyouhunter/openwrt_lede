@@ -101,8 +101,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        rm -f ./feeds/kiss/passwall/luci-app-passwall/Makefile
-        wget -O ./feeds/kiss/passwall/luci-app-passwall/Makefile https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/Passwall_Makefile
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
