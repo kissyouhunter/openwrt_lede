@@ -53,6 +53,8 @@ LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Simple_Obfs:simple-obfs \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_GO:trojan-go \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_Plus:trojan-plus \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray:v2ray-core \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin:v2ray-plugin \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray:xray-core \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray_Plugin:xray-plugin
 
