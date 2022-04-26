@@ -71,7 +71,7 @@ sed -i 's/control/services/g' ./feeds/kiss/luci-app-cpulimit/luasrc/model/cbi/*.
 
 #store 商店
 
-sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
+#sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
 
 #tencentddns 腾讯ddns
 
