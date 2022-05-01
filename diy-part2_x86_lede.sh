@@ -39,7 +39,7 @@ sed -i '/exit 0/d' package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
 #替换coremark ./lede/feeds/packages/utils/coremark/coremark.sh
-wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt_X86/main/diy/x86_lede/coremark.sh
+wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/coremark.sh
 
 ##更改插件位置
 
