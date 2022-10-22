@@ -134,7 +134,7 @@ jobs:
       run: |
         cd openwrt
         mkdir -p files/etc/config/
-        cp $GITHUB_WORKSPACE/diy/diy/x86_lede/network files/etc/config/network -v
+        cp $GITHUB_WORKSPACE/diy/x86_lede/network files/etc/config/network -v
         chmod -R 755 .
         
     - name: Download package
