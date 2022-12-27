@@ -241,6 +241,26 @@ jobs:
         commit: main
         allowUpdates: true
         repo: Openwrt_X86-Openwrt_N1-Armbian_N1
+        body: |
+          ## Openwrt_X86:
+
+          * lede 大雕 openwrt 内核 5.4 5.10 and 5.15 (5.15为精简旁路由版)
+
+          * immortalwrt 天灵 openwrt 内核 4.19 and openwrt 21.02-5.4 旁路由
+
+          * lienol openwrt 22.03 内核 5.10 (无密码)
+
+          * IP: 192.168.2.3 ID: root Password: password
+
+          * adguardhome已内置好DNS和广告过滤，下载好核心后开启即可。
+
+          * adguardhome ID: root Password: password
+
+          * rootfs 文件是lxc专用，例如PVE的CT模板。([教程](https://nb0.cc/lxc))
+
+          * x86固件不带docker,请用一键脚本自行安装。
+
+          * （一键脚本： bash <(curl -s -S -L nb0.cc/kiss) 或者 curl -Lo kiss.sh nb0.cc/kiss && bash kiss.sh）
         artifacts: ${{ env.FIRMWARE }}/*
 
     #- name: Delete workflow runs
