@@ -26,6 +26,10 @@ on:
         description: "输入具体内核版本:"
         required: false
         default: "5.10.x"
+      upload_firmware:
+        description: "whether to  upload firmware."
+        required: false
+        default: "false"
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -33,10 +37,8 @@ env:
   DIY_P2_SH: diy-part2_x86_lede.sh
   DIY_SH: common.sh
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: false
   SERVERCHAN_SCKEY: true
   USE_CACHEWRTBUILD: true
   TZ: Asia/Shanghai
@@ -62,6 +64,8 @@ jobs:
         echo "DIY_P1_SH=${file}" >> $GITHUB_ENV
         echo "CONFIG_FILE=${feeds}" >> $GITHUB_ENV
         echo "KERNEL_VERSION=${{ github.event.inputs.set_kernel_version }}" >> $GITHUB_ENV
+        upload_firmware="${{ github.event.inputs.upload_firmware }}"
+        echo "UPLOAD_FIRMWARE=${upload_firmware}" >> $GITHUB_ENV
     
     - name: telegrame_bot
       run: |
