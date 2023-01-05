@@ -81,6 +81,10 @@ sed -i 's/control/services/g' ./feeds/kiss/luci-app-cpulimit/luasrc/model/cbi/*.
 
 sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
 
-# python-cryptography 暂时修复
-#rm -rf feeds/packages/lang/python/python-cryptography
-#svn co https://github.com/openwrt/packages/trunk/lang/python/python-cryptography feeds/packages/lang/python/python-cryptography
+#添加 aliyundrive-fuse
+svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/aliyundrive-fuse ./package/aliyundrive-fuse
+svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/luci-app-aliyundrive-fuse ./package/luci-app-aliyundrive-fuse
+
+#添加aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav ./package/aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav ./package/luci-app-aliyundrive-webdav
