@@ -267,6 +267,17 @@ jobs:
           * （一键脚本： bash <(curl -s -S -L nb0.cc/kiss) 或者 curl -Lo kiss.sh nb0.cc/kiss && bash kiss.sh）
         artifacts: ${{ env.FIRMWARE }}/*
 
+    - name: Setup Rclone
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{ secrets.RCLONE_CONFIG }}
+
+    - name: Upload to OneDrive
+      run: |
+        cd openwrt/bin/targets/*/*
+        mkdir -p upload && mv * upload/
+        rclone -v move upload kiss:onedrive/OPENWRT/N1_OP
+
     - name: Notify on failure
       if: ${{ failure() }}
       run: |
