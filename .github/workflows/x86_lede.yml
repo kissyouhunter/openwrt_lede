@@ -275,7 +275,7 @@ jobs:
     - name: Upload to OneDrive
       run: |
         cd openwrt/bin/targets/*/*
-        mkdir -p upload && mv * upload/
+        mkdir -p upload && mv *.gz upload/
         rclone -v move upload kiss:onedrive/OPENWRT/N1_OP
 
     - name: Notify on failure
