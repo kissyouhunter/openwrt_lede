@@ -731,7 +731,7 @@
         <tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("sensors | grep 'Core 0' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 1' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 2' | cut -c10- |awk '{print $1}'")%><%=luci.sys.exec("sensors | grep 'Core 3' | cut -c10- |awk '{print $1}'")%></td></tr>
 		<tr><td width="33%"><%:Load Average%></td><td id="loadavg">-</td></tr>
 		<tr><td width="33%"><%:CPU usage (%)%></td><td id="cpuusage">-</td></tr>
-		<tr><td width="33%"><%:编译作者%></td><td><a href="https://github.com/kissyouhunter/Openwrt_X86-Openwrt_N1-Armbian_N1" target="_blank">kisyouhunter</a>
+		<tr><td width="33%"><%:编译作者%></td><td><a href="https://github.com/kissyouhunter/Openwrt_X86-Openwrt_N1-Armbian_N1" target="_blank">kissyouhunter</a>
 		</td></tr>
 	</table>
 </fieldset>
