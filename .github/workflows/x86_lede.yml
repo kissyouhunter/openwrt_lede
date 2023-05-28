@@ -19,9 +19,14 @@ on:
         required: false
         default: 'false'
       set_kernel:
-        description: "KERNEL: 5.4.y / 5.10.y / 5.15.y / 6.1.y"
+        description: "KERNEL"
         required: false
-        default: "5.10.y"
+        default: "5.4.y"
+        options:
+          - 5.4.y
+          - 5.10.y
+          - 5.15.y
+          - 6.1.y
       set_kernel_version:
         description: "输入具体内核版本:"
         required: false
