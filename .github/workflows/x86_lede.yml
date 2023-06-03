@@ -22,11 +22,12 @@ on:
         description: "KERNEL"
         required: false
         default: "5.4.y"
+        type: choice
         options:
-          - 5.4.y
-          - 5.10.y
-          - 5.15.y
-          - 6.1.y
+          - "5.4.y"
+          - "5.10.y"
+          - "5.15.y"
+          - "6.1.y"
       set_kernel_version:
         description: "输入具体内核版本:"
         required: false
