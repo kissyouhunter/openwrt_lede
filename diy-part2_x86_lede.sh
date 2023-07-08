@@ -88,3 +88,7 @@ svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/luci-app-aliyu
 #添加aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav ./package/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav ./package/luci-app-aliyundrive-webdav
+
+
+## 暂时修复linux报错
+sed -i 's/fs\/cifs/fs\/smb\/client/g; s/fs\/smbfs_common/fs\/smb\/common/g' package/kernel/linux/modules/fs.mk
