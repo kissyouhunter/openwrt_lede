@@ -28,6 +28,6 @@ sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefi
 
 # 内核替换成 kernel 5.4.183
 
-#sed -i 's/LINUX_KERNEL_HASH-5.4.203 = fc933f5b13066cfa54aacb5e86747a167bad1d8d23972e4a03ab5ee36c29798a/LINUX_KERNEL_HASH-5.4.210 = 940396878c2c183531669d87831eda60a86fbf4662904922c49151b50afc888e/g' ./include/kernel-5.4
+sed -i 's/LINUX_KERNEL_HASH-5.4.247 = 33010d4f02314dd4eb51ab5d09f49ce970f2cfefe9f2133a2e085cac5dfffed7/LINUX_KERNEL_HASH-5.4.249 = dc5458462c6edbe3473fc6dee80fbe0841df7c177fe0546c2f131e5918f5351d/g' ./include/kernel-5.4
 
-#sed -i 's/LINUX_VERSION-5.4 = .203/LINUX_VERSION-5.4 = .210/g' ./include/kernel-5.4
+sed -i 's/LINUX_VERSION-5.4 = .247/LINUX_VERSION-5.4 = .249/g' ./include/kernel-5.4
