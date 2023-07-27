@@ -91,4 +91,4 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-ali
 
 
 ## 暂时修复linux报错
-sed -i 's/fs\/cifs/fs\/smb\/client/g; s/fs\/smbfs_common/fs\/smb\/common/g' package/kernel/linux/modules/fs.mk
+#sed -i 's/fs\/cifs/fs\/smb\/client/g; s/fs\/smbfs_common/fs\/smb\/common/g' package/kernel/linux/modules/fs.mk

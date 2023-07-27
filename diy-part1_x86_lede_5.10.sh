@@ -28,7 +28,7 @@ sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Makef
 
 # 内核替换成 kernel 5.10.90
 
-sed -i 's/LINUX_KERNEL_HASH-5.10.183 = 409497c635caf49614de21950ec091eb621a5d5fe1f63fc418ef68ac38b56119/LINUX_KERNEL_HASH-5.10.186 = 1e60296a135d272bb7ce645f6ae68fbd4ffd1972cb4b82c38c6faa1172481be3/g' ./include/kernel-5.10
+#sed -i 's/LINUX_KERNEL_HASH-5.10.183 = 409497c635caf49614de21950ec091eb621a5d5fe1f63fc418ef68ac38b56119/LINUX_KERNEL_HASH-5.10.186 = 1e60296a135d272bb7ce645f6ae68fbd4ffd1972cb4b82c38c6faa1172481be3/g' ./include/kernel-5.10
 
-sed -i 's/LINUX_VERSION-5.10 = .183/LINUX_VERSION-5.10 = .186/g' ./include/kernel-5.10
+#sed -i 's/LINUX_VERSION-5.10 = .183/LINUX_VERSION-5.10 = .186/g' ./include/kernel-5.10
 
