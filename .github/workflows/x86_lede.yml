@@ -247,9 +247,7 @@ jobs:
 
           * lede 大雕 openwrt 内核 5.4 5.10 and 5.15 6.1 (5.15和6.1为精简旁路由版)
 
-          * immortalwrt 天灵 openwrt 内核 4.19 and openwrt 21.02-5.4 旁路由
-
-          * lienol openwrt 22.03 内核 5.10 (无密码)
+          * immortalwrt 天灵 openwrt 内核 4.19
 
           * IP: 192.168.2.3 ID: root Password: password
 
