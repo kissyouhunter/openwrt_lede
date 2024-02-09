@@ -51,7 +51,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: choose kernel
@@ -78,6 +78,18 @@ jobs:
     
     - name: telegrame_bot
       run: |
+        echo "警告⚠"
+        echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
+        echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
+        echo "--------------------------CPU信息--------------------------"
+        echo "CPU物理数量: $(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
+        echo "CPU核心数量: $(nproc)"
+        echo -e "CPU型号信息:$(cat /proc/cpuinfo | grep -m1 name | awk -F: '{print $2}')\n"
+        echo "--------------------------内存信息--------------------------"
+        echo "已安装内存详细信息:"
+        echo -e "$(sudo lshw -short -C memory | grep GiB)\n"
+        echo "--------------------------硬盘信息--------------------------"
+        echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
         cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c > CPU
         cat /proc/cpuinfo | grep "cpu cores" | uniq >> CPU
         sed -i 's|[[:space:]]||g; s|^.||' CPU && sed -i 's|CPU||g; s|pucores:||' CPU
@@ -87,40 +99,36 @@ jobs:
           curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
           您正在使用kissyouhunter仓库的 {CPU型号为 [ ${CPUNAME} ] 核心数 为 [ ${CPUCORES} ] 线程数为 [ $(nproc) ]的机器} 编译 ${{ github.event.inputs.set_kernel_version }} lede 固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
         fi
-        
-    - name: Checkout
-      uses: actions/checkout@v3
 
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        docker rmi `docker images -q`
-        [[ -n "${AGENT_TOOLSDIRECTORY}" ]] && sudo rm -rf "${AGENT_TOOLSDIRECTORY}"
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
-        sudo -E apt-get update
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
+        docker rmi $(docker images -q)
+        sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
         sudo -E systemctl daemon-reload
-        sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/dependency/depends-ubuntu-2004)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+
+    - name: Combine Disks
+      uses: easimon/maximize-build-space@master
+      with:
+        swap-size-mb: 1024
+        temp-reserve-mb: 100
+        root-reserve-mb: 1024
+
+    - name: Checkout
+      uses: actions/checkout@main
  
     - name: Clone source code
       working-directory: /workdir
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        
-    #- name: load cache
-    #  if: env.USE_CACHEWRTBUILD == 'true'
-    #  uses: klever1988/cachewrtbuild@test
-    #  with:
-    #    ccache: 'true'
-    #    prefix: ${{ github.workspace }}/openwrt        
+        df -hT $GITHUB_WORKSPACE
+        git clone $REPO_URL -b $REPO_BRANCH openwrt  
 
     - name: Load custom feeds
       run: |
