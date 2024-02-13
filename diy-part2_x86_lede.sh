@@ -87,14 +87,8 @@ sed -i 's/control/services/g' ./feeds/kiss/luci-app-cpulimit/luasrc/model/cbi/*.
 
 sed -i 's/"admin", "tencentcloud"/"admin", "services", "tencentcloud"/g' ./feeds/kiss/luci-app-tencentddns/files/luci/controller/*.lua
 
-#添加 aliyundrive-fuse
-svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/aliyundrive-fuse ./feeds/packages/multimedia/aliyundrive-fuse
-svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/luci-app-aliyundrive-fuse ./feeds/luci/applications/luci-app-aliyundrive-fuse
-
-#添加aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav ./feeds/packages/multimedia/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav ./feeds/luci/applications/luci-app-aliyundrive-webdav
-
+#aliyundrive-webdav
+mv ./feeds/kiss/aliyundrive-webdav ./feeds/packages/multimedia/aliyundrive-webdav
 
 ## 暂时修复linux报错
 #sed -i 's/fs\/cifs/fs\/smb\/client/g; s/fs\/smbfs_common/fs\/smb\/common/g' package/kernel/linux/modules/fs.mk
